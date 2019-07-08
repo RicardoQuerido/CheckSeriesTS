@@ -24,7 +24,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/content/bootstrap.min.css",
+              "src/assets/content/font-awesome.css",
+              "src/assets/content/site.css"
             ],
             "scripts": []
           },
