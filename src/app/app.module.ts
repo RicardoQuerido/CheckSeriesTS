@@ -7,6 +7,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import { TvshowpageComponent } from './tvshowpage/tvshowpage.component';
+import { CardTVShowDescriptionComponent } from './card-tvshow-description/card-tvshow-description.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +18,19 @@ import { SignupComponent } from './signup/signup.component';
     HomepageComponent,
     NavbarComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TvshowpageComponent,
+    CardTVShowDescriptionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    // ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

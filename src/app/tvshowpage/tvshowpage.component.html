@@ -1,0 +1,96 @@
+<div class="row" style="margin-top: 120px">
+  <div class="offset-md-1 col-md-3 d-flex justify-content-center">
+    <img src="https://image.tmdb.org/t/p/w500/{{ show.poster_path }}" alt="show_image">
+
+  </div>
+  <div class="col-md-6" style="margin-left: 100px">
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th scope="col" style="width: 25%">Type</th>
+        <th scope="col">Info</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>ID</td>
+        <td>{{ show.id }}</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{ show.name }}</td>
+      </tr>
+      <tr>
+        <td>Episode Runtime</td>
+        <td>{{ show.episode_run_time }}</td>
+      </tr>
+      <tr>
+        <td>First Air Date</td>
+        <td>{{ show.first_air_date }}</td>
+      </tr>
+      <tr>
+        <td>Number of Episodes</td>
+        <td>{{ show.number_of_episodes }}</td>
+      </tr>
+      <tr>
+        <td>Number of Seasons</td>
+        <td>{{ show.number_of_seasons }}</td>
+      </tr>
+      <tr>
+        <td>Overview</td>
+        <td>{{ show.overview }}</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>{{ show.status }}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr />
+<div class="row" *ngFor="let season of seasons">
+  <div class="offset-md-1 col-md-10">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="card">
+        <div class="card-header" role="tab" id="headingOne">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{season.season_number}}" aria-expanded="true" aria-controls="collapseOne">
+              Season {{season.season_number}}
+            </a>
+          </h5>
+        </div>
+
+        <div id="collapse{{season.season_number}}" class="collapse show" role="tabpanel" aria-labelledby="headingOne" >
+          <div class="card-block" >
+            <table class="table table-sm text-center">
+              <thead>
+              <tr>
+                <th scope="col" style="width:10%;">#</th>
+                <th scope="col" style="width:50%;">Title</th>
+                <th scope="col" style="width:30%;">Air Date</th>
+                <th scope="col" style="width:10%;"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let episode of season.episodes">
+                <th scope="row">{{episode.episode_number}}</th>
+                <td>{{episode.name}}</td>
+                <td>{{episode.air_date}}</td>
+                <td><a class="nav-link" href="#"><i class="fa fa-eye fa-lg"
+                                                    aria-hidden="true"></i></a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+
