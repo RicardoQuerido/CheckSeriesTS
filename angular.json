@@ -29,7 +29,9 @@
               "src/assets/content/font-awesome.css",
               "src/assets/content/site.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/site.js"
+            ]
           },
           "configurations": {
             "production": {

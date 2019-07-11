@@ -3,13 +3,13 @@
     <div class="intro-text">
       <div class="intro-lead-in">Welcome To CheckSeries!</div>
 
-      <div *ngIf="authenticated ; then auth else notAuth"></div>
+      <div *ngIf="currentUser ; then auth else notAuth"></div>
 
 
       <ng-template #auth>
         <div class="intro-heading text-uppercase">
-          <h1>Hello again xxx</h1>
-          <a class="btn btn-primary btn-xl text-uppercase" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Log Out</a>
+          <h1>Hello again {{currentUser.username}}</h1>
+          <a class="btn btn-primary btn-xl text-uppercase" (click)="logout()"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Log Out</a>
         </div>
       </ng-template>
 

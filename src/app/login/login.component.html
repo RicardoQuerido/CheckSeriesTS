@@ -1,25 +1,32 @@
-<header class="masthead">
+<header class="masthead" xmlns="http://www.w3.org/1999/html">
   <div class="container d-flex justify-content-center">
     <div style="width: 600px;
             overflow: hidden;
             padding-top: 150px;
             padding-bottom: 70px">
       <div style="background-color: white; border-radius: 5%; overflow: hidden;">
-        <form action="." method="post">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <h2 style="background-color:black; padding-top: 40px; padding-bottom: 20px">Login</h2>
           <div style="margin: 30px; color: black; text-align: left">
             <div class="form-group">
               <label class="form-p" for="username">Username</label>
-              <input class="form-control1" type="text" name="username" id="username"><br>
+              <input class="form-control1" type="text" formControlName="username" id="username" [ngClass]="{'is-invalid': submitted && loginForm.controls.username.errors }">
+              <div *ngIf="submitted && loginForm.controls.username.errors" class="invalid-feedback">
+                <div *ngIf="loginForm.controls.username.errors.required">Username is Required</div>
+              </div>
+              <br>
             </div>
             <div class="form-group">
               <label class="form-p" for="password">Password</label>
-              <input class="form-control1" type="password" name="username" id="password"><br>
+              <input class="form-control1" type="password" formControlName="password" id="password" [ngClass]="{'is-invalid': submitted && loginForm.controls.password.errors }">
+              <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
+                <div *ngIf="loginForm.controls.password.errors.required">Password is Required</div>
+              </div>
+                <br>
             </div>
             <div class="form-group">
               <div class="d-flex justify-content-center mt-5">
-                <input type="hidden" value="/"/>
-                <input type="submit" value="Login" class="btn btn-primary"/>
+                <button [disabled]="loading"  class="btn btn-primary">Login</button>
               </div>
             </div>
           </div>

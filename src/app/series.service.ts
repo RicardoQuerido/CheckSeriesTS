@@ -15,8 +15,8 @@ export class SeriesService {
     this.BASE_URL = 'https://api.themoviedb.org/';
   }
 
-  getMostPopular(): Observable<object> {
-    return this.http.get(this.BASE_URL + '3/tv/popular?api_key=' + this.API_KEY + '&language=en-US&page=1');
+  getMostPopular(page: string): Observable<object> {
+    return this.http.get(this.BASE_URL + '3/tv/popular?api_key=' + this.API_KEY + '&language=en-US&page=' + page);
   }
 
   getTVShowInfo(id: number): Observable<object> {
@@ -24,6 +24,10 @@ export class SeriesService {
   }
 
   getEpisodesBySeason(season: number, showId: number) {
-    return this.http.get(this.BASE_URL + '3/tv/' + showId + '/season/' + season + '?api_key=' + this.API_KEY + '&language=en-US&page=1')
+    return this.http.get(this.BASE_URL + '3/tv/' + showId + '/season/' + season + '?api_key=' + this.API_KEY + '&language=en-US&page=1');
+  }
+
+  searchByName(season: number, showName: string) {
+    return this.http.get(this.BASE_URL + '3/search/tv?api_key=' + this.API_KEY + '&language=en-US&page=1&query=' + showName);
   }
 }

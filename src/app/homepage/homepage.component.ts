@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SeriesService} from '../series.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from '../authentication.service';
+import {User} from '../User';
 
 @Component({
   selector: 'app-homepage',
@@ -9,16 +11,19 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  authenticated: boolean;
   mostPopular: object[];
+  currentUser: User;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private seriesService: SeriesService) { }
+              private seriesService: SeriesService,
+              private authService: AuthenticationService) {
+    this.authService.currentUser.subscribe(u => this.currentUser = u);
+  }
 
   ngOnInit() {
-    this.authenticated = false;
-    this.seriesService.getMostPopular().subscribe(resp => {
+
+    this.seriesService.getMostPopular('1').subscribe(resp => {
       // @ts-ignore
       console.log(resp.results.slice(0, 3));
       // @ts-ignore
@@ -26,4 +31,7 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }

@@ -11,6 +11,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { TvshowpageComponent } from './tvshowpage/tvshowpage.component';
 import { CardTVShowDescriptionComponent } from './card-tvshow-description/card-tvshow-description.component';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
+import { AlltvshowspageComponent } from './alltvshowspage/alltvshowspage.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +22,17 @@ import { CardTVShowDescriptionComponent } from './card-tvshow-description/card-t
     LoginComponent,
     SignupComponent,
     TvshowpageComponent,
-    CardTVShowDescriptionComponent
+    CardTVShowDescriptionComponent,
+    AlltvshowspageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // ReactiveFormsModule
+    ReactiveFormsModule
   ],
   providers: [
-    // {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

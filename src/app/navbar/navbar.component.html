@@ -11,24 +11,18 @@
 
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa fa-trophy fa-lg"
-                                                          aria-hidden="true"></i>Top TV
+          <a class="nav-link" routerLink="alltvshows"><i class="fa fa-trophy fa-lg"
+                                                          aria-hidden="true"></i>Find TV
           Shows</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa fa-search fa-lg"
-                                                          aria-hidden="true"></i>Search</a>
-        </li>
 
-        <div *ngIf="authenticated ; then auth else notAuth"></div>
+        <div *ngIf="currentUser ; then auth else notAuth"></div>
 
         <ng-template #auth>
-          <form id="logoutForm" action="/logout" method="get">
             <li class="nav-item">
-              <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()"><i
+              <a class="nav-link" (click)="logout()"><i
                 class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Log Out</a>
             </li>
-          </form>
         </ng-template>
 
         <ng-template #notAuth>

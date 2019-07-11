@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SeriesService} from '../series.service';
+import {forkJoin} from 'rxjs/internal/observable/forkJoin';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tvshowpage',
@@ -20,19 +22,25 @@ export class TvshowpageComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.seriesService.getTVShowInfo(id).subscribe(show => {
+    this.seriesService.getTVShowInfo(id).subscribe(async show => {
       // @ts-ignore
       this.show = show;
 
       console.log(this.show);
 
+
       // @ts-ignore
       for (let i = 0; i <= this.show.number_of_seasons; i++) {
         // @ts-ignore
-        this.seriesService.getEpisodesBySeason(i, this.show.id).subscribe(info => {
+        await this.seriesService.getEpisodesBySeason(i, this.show.id).subscribe(info => {
+
+          console.log(i);
           // @ts-ignore
           this.seasons.push(info);
           console.log(info);
+        });
+        await new Promise((resolve) => {
+          setTimeout(resolve, 500);
         });
       }
     });
