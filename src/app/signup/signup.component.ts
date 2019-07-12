@@ -12,8 +12,8 @@ import {first} from 'rxjs/operators';
 export class SignupComponent implements OnInit {
 
   signUpForm: FormGroup;
-  private submitted = false;
-  private loading = false;
+  submitted = false;
+  loading = false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,

@@ -16,8 +16,8 @@ import {TVShow} from '../TVShow';
 })
 export class TvshowpageComponent implements OnInit {
 
-  show: object;
-  seasons: Array<object[]>;
+  show: any;
+  seasons: Array<any>;
   currentUser: User;
   following: boolean;
 

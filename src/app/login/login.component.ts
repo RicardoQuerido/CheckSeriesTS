@@ -12,8 +12,8 @@ import {first} from 'rxjs/internal/operators/first';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  private submitted = false;
-  private loading = false;
+  submitted = false;
+  loading = false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,

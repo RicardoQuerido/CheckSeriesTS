@@ -17,7 +17,7 @@ export class AlltvshowspageComponent implements OnInit {
   lastPage: number;
   searchForm: FormGroup;
   private submitted = false;
-  private loading = false;
+  loading = false;
 
 
   constructor(private seriesService: SeriesService,

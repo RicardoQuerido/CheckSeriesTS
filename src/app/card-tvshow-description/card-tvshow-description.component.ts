@@ -13,7 +13,7 @@ declare function adaptFontSize(): any;
 })
 export class CardTVShowDescriptionComponent implements OnInit {
 
-  @Input() show: object;
+  @Input() show: any;
 
   currentUser: User;
   following: boolean;
