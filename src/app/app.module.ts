@@ -13,6 +13,7 @@ import { TvshowpageComponent } from './tvshowpage/tvshowpage.component';
 import { CardTVShowDescriptionComponent } from './card-tvshow-description/card-tvshow-description.component';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { AlltvshowspageComponent } from './alltvshowspage/alltvshowspage.component';
+import { MytvshowspageComponent } from './mytvshowspage/mytvshowspage.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AlltvshowspageComponent } from './alltvshowspage/alltvshowspage.compone
     SignupComponent,
     TvshowpageComponent,
     CardTVShowDescriptionComponent,
-    AlltvshowspageComponent
+    AlltvshowspageComponent,
+    MytvshowspageComponent
   ],
   imports: [
     BrowserModule,

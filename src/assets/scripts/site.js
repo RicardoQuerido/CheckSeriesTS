@@ -28,3 +28,10 @@ function adjustNavbar() {
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 }
+
+function scrollTop(){
+  window.scroll({
+    behavior: "smooth",
+    top: 0,
+  });
+}

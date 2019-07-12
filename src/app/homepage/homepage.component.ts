@@ -34,4 +34,6 @@ export class HomepageComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+
 }

@@ -11,14 +11,17 @@
 
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="alltvshows"><i class="fa fa-trophy fa-lg"
-                                                          aria-hidden="true"></i>Find TV
+          <a class="nav-link" routerLink="alltvshows"><i class="fa fa-search fa-lg" aria-hidden="true"></i>Find TV
           Shows</a>
         </li>
 
         <div *ngIf="currentUser ; then auth else notAuth"></div>
 
         <ng-template #auth>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="mytvshows"><i class="fas fa-desktop fa-lg"></i>My TV
+              Shows</a>
+          </li>
             <li class="nav-item">
               <a class="nav-link" (click)="logout()"><i
                 class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Log Out</a>

@@ -3,6 +3,8 @@ import {SeriesService} from '../series.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 
+declare function scrollTop(): any;
+
 @Component({
   selector: 'app-alltvshowspage',
   templateUrl: './alltvshowspage.component.html',
@@ -12,9 +14,11 @@ export class AlltvshowspageComponent implements OnInit {
 
   tvShows: object[];
   currentPage: number;
+  lastPage: number;
   searchForm: FormGroup;
   private submitted = false;
   private loading = false;
+
 
   constructor(private seriesService: SeriesService,
               private formBuilder: FormBuilder) {
@@ -28,6 +32,7 @@ export class AlltvshowspageComponent implements OnInit {
       showName: ['', Validators.required]
     });
     this.currentPage = 1;
+    this.lastPage = 9999;
     this.seriesService.getMostPopular(this.currentPage + '').subscribe(resp => {
       // @ts-ignore
       console.log(resp.results);
@@ -45,10 +50,7 @@ export class AlltvshowspageComponent implements OnInit {
       // @ts-ignore
       this.tvShows = resp.results;
     });
-  }
-
-  searchTVShow(showName: string) {
-
+    scrollTop();
   }
 
   onSubmit() {

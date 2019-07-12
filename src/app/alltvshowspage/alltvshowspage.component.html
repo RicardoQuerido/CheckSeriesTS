@@ -1,7 +1,10 @@
 <div class="container-fluid" style="margin-top: 150px;">
+
+  <h2 class="d-flex justify-content-center text-uppercase ">Find TV Shows</h2>
+  <hr>
   <div class="wrap" style="margin-bottom: 30px">
-      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" >
-        <div class="form-group" class="search">
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search">
+        <div class="form-group" style="width: inherit">
         <input type="text" class="searchTerm" formControlName="showName" placeholder="Search TV shows here (by name)">
         </div>
         <div class="form-group">
@@ -21,7 +24,7 @@
   </div>
 
   <div class="row d-flex justify-content-center">
-    <a class="btn btn-primary btn-xl text-uppercase" style="margin-right: 5px; color: #fff" (click)="newTVShows('down')">Previous page</a>
-    <a class="btn btn-primary btn-xl text-uppercase" style="margin-right: 5px; color: #fff" (click)="newTVShows('up')">Next page</a>
+    <a class="btn btn-primary btn-xl text-uppercase" style="margin-right: 5px; color: #fff" (click)="newTVShows('down')" *ngIf="currentPage!=1">Previous page</a>
+    <a class="btn btn-primary btn-xl text-uppercase" style="margin-right: 5px; color: #fff" (click)="newTVShows('up')" *ngIf="currentPage!=lastPage">Next page</a>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="row" style="margin-top: 120px">
   <div class="offset-md-1 col-md-3 d-flex justify-content-center">
-    <img src="https://image.tmdb.org/t/p/w500/{{ show.poster_path }}" alt="show_image">
+    <img src="https://image.tmdb.org/t/p/w500/{{ show.poster_path }}" alt="show_image" style="border: 1px solid black; border-radius: 3%;">
 
   </div>
   <div class="col-md-6" style="margin-left: 100px">
@@ -47,7 +47,14 @@
 
       </tbody>
     </table>
+
+    <div class=" d-flex justify-content-end" *ngIf="currentUser && !following">
+      <button class="btn btn-primary" (click)="followTVShow()">+ Follow {{show.name}}</button>
+    </div>
+
   </div>
+
+
 </div>
 
 <hr />
@@ -75,12 +82,12 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let episode of season.episodes">
+              <tr *ngFor="let episode of season.episodes" [ngStyle]="{'background-color': episode.checked ? '#212529': '#fff', 'color': episode.checked ? '#fff': '#000'}">
                 <th scope="row">{{episode.episode_number}}</th>
                 <td>{{episode.name}}</td>
                 <td>{{episode.air_date}}</td>
-                <td><a class="nav-link" href="#"><i class="fa fa-eye fa-lg"
-                                                    aria-hidden="true"></i></a></td>
+                <td><a *ngIf="currentUser" (click)="checkEpisode(episode)" [ngStyle]="{'color': episode.checked ? '#fed136': '#000'}"><i class="fa fa-eye fa-lg"
+                                                    aria-hidden="true"></i></a ></td>
               </tr>
               </tbody>
             </table>
